@@ -48,11 +48,11 @@ Command Line Arguments
 
 ## Running the Application
 Here is an example:
-This continuously logs 'Hello World' to AWS CloudWatch.
+This installs pip and tqdm libraries and continuously logs 'Hello World' to AWS CloudWatch.
 ```
 python main.py \
   --docker-image ubuntu:latest \
-  --bash-command "bash -c 'while true; do echo hello world; sleep 1; done'" \
+  --bash-command 'bash -c "pip install -U pip && pip install tqdm && while true; do echo hello world; sleep 1; done"'\
   --aws-cloudwatch-group MyLogGroup \
   --aws-cloudwatch-stream MyLogStream \
   --aws-access-key-id <YourAccessKeyId> \
