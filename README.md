@@ -39,13 +39,13 @@ pip install -r requirements.txt
 
 ## Usage
 - Command Line Arguments
---docker-image: Name of the Docker image to run.
---bash-command: Bash command to execute inside the Docker container.
---aws-cloudwatch-group: Name of the AWS CloudWatch log group (will be created if it does not exist).
---aws-cloudwatch-stream: Name of the log stream within the group (will be created if it does not exist).
---aws-access-key-id: Your AWS access key ID.
---aws-secret-access-key: Your AWS secret access key.
---aws-region: The AWS region for CloudWatch Logs.
+- --docker-image: Name of the Docker image to run.
+- --bash-command: Bash command to execute inside the Docker container.
+- --aws-cloudwatch-group: Name of the AWS CloudWatch log group (will be created if it does not exist).
+- --aws-cloudwatch-stream: Name of the log stream within the group (will be created if it does not exist).
+- --aws-access-key-id: Your AWS access key ID.
+- --aws-secret-access-key: Your AWS secret access key.
+- --aws-region: The AWS region for CloudWatch Logs.
 
 ## Running the Application
 - Here is an example:
