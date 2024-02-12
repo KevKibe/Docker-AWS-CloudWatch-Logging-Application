@@ -50,7 +50,7 @@ Here is an example:
 ```
 python main.py \
   --docker-image ubuntu:latest \
-  --bash-command "echo Hello World" \
+  --bash-command 'bash -c "echo Hello World"' \
   --aws-cloudwatch-group MyLogGroup \
   --aws-cloudwatch-stream MyLogStream \
   --aws-access-key-id <YourAccessKeyId> \
@@ -62,7 +62,7 @@ If you prefer to run a Python script file, ensure the file is accessible within 
 ```
 python main.py \
   --docker-image python:3.8-slim \
-  --python-script "/path/to/your_script.py" \
+  --bash-command 'bash -c "python /path/to/script.py"' \
   --aws-cloudwatch-group MyLogGroup \
   --aws-cloudwatch-stream MyLogStream \
   --aws-access-key-id <YourAccessKeyId> \
