@@ -1,6 +1,6 @@
 ## Introduction
 This application facilitates running Docker containers and streaming their logs to AWS CloudWatch. It leverages Python's Docker SDK and Boto3 library for AWS interactions. Below is a comprehensive guide to help developers get started and use the application efficiently.<br>
-This guide is intended for software developers, DevOps professionals, and system administrators with basic knowledge of Docker, AWS, and Python. It's particularly useful for those looking to automate log management and monitoring in a cloud environment.
+It's particularly useful for those looking to automate log management and monitoring in a cloud environment.
 
 ## Prerequisites
 - Python: Ensure Python 3.6 or newer is installed. [Python Installation Guide](https://wiki.python.org/moin/BeginnersGuide/Download) 
