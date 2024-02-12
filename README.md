@@ -57,7 +57,7 @@ python main.py \
   --aws-cloudwatch-stream MyLogStream \
   --aws-access-key-id <YourAccessKeyId> \
   --aws-secret-access-key <YourSecretAccessKey> \
-  --aws-region us-east-1
+  --aws-region <AWS-region>
 ```
 ## Using a Python Script File
 If you prefer to run a Python script file, ensure the file is accessible within your directory.
@@ -69,5 +69,5 @@ python main.py \
   --aws-cloudwatch-stream MyLogStream \
   --aws-access-key-id <YourAccessKeyId> \
   --aws-secret-access-key <YourSecretAccessKey> \
-  --aws-region us-east-1
+  --aws-region <AWS-region>
 ```
