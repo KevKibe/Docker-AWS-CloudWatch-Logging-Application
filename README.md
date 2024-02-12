@@ -47,10 +47,11 @@ Command Line Arguments
 
 ## Running the Application
 Here is an example:
+This continuously logs 'Hello World' to AWS CloudWatch.
 ```
 python main.py \
   --docker-image ubuntu:latest \
-  --bash-command 'bash -c "echo Hello World"' \
+  --bash-command "bash -c 'while true; do echo hello world; sleep 1; done'" \
   --aws-cloudwatch-group MyLogGroup \
   --aws-cloudwatch-stream MyLogStream \
   --aws-access-key-id <YourAccessKeyId> \
