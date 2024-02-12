@@ -1,5 +1,5 @@
 ## Guide
-- This application facilitates running Docker containers and streaming their logs to AWS CloudWatch. It leverages Python's Docker SDK and Boto3 library for AWS interactions. Below is a comprehensive guide to help developers get started and use the application efficiently.
+This application facilitates running Docker containers and streaming their logs to AWS CloudWatch. It leverages Python's Docker SDK and Boto3 library for AWS interactions. Below is a comprehensive guide to help developers get started and use the application efficiently.
 
 ## Prerequisites
 - Python: Ensure Python 3.6 or newer is installed.
@@ -13,7 +13,6 @@
 - Clone the Repository: Clone or download the application code to your local machine.
 ```
 git clone https://github.com/KevKibe/Docker-AWS-CloudWatch-Logging-Application.git
-
 ```
 
 - Navigate to the project directory 
@@ -30,7 +29,6 @@ source env/bin/activate
 - Install dependencies by running this command
 ```
 pip install -r requirements.txt
-
 ```
 - AWS Credentials: Ensure your AWS credentials (AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY) are present and the AWS Cloudwatch permissions are active.
 
@@ -38,7 +36,7 @@ pip install -r requirements.txt
 
 
 ## Usage
-- Command Line Arguments
+Command Line Arguments
 - --docker-image: Name of the Docker image to run.
 - --bash-command: Bash command to execute inside the Docker container.
 - --aws-cloudwatch-group: Name of the AWS CloudWatch log group (will be created if it does not exist).
@@ -48,7 +46,7 @@ pip install -r requirements.txt
 - --aws-region: The AWS region for CloudWatch Logs.
 
 ## Running the Application
-- Here is an example:
+Here is an example:
 ```
 python main.py \
   --docker-image ubuntu:latest \
@@ -58,5 +56,16 @@ python main.py \
   --aws-access-key-id <YourAccessKeyId> \
   --aws-secret-access-key <YourSecretAccessKey> \
   --aws-region us-east-1
-
+```
+## Using a Python Script File
+If you prefer to run a Python script file, ensure the file is accessible within your directory.
+```
+python main.py \
+  --docker-image python:3.8-slim \
+  --python-script "/path/to/your_script.py" \
+  --aws-cloudwatch-group MyLogGroup \
+  --aws-cloudwatch-stream MyLogStream \
+  --aws-access-key-id <YourAccessKeyId> \
+  --aws-secret-access-key <YourSecretAccessKey> \
+  --aws-region us-east-1
 ```
