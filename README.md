@@ -48,16 +48,8 @@ Command Line Arguments
 
 ## Running the Application
 Here is an example:
-This installs pip and tqdm libraries and continuously logs 'Hello World' to AWS CloudWatch.
-```
-python main.py \
-  --docker-image ubuntu:latest \
-  --bash-command 'bash -c "pip install -U pip && pip install tqdm && while true; do echo hello world; sleep 1; done"'\
-  --aws-cloudwatch-group MyLogGroup \
-  --aws-cloudwatch-stream MyLogStream \
-  --aws-access-key-id <YourAccessKeyId> \
-  --aws-secret-access-key <YourSecretAccessKey> \
-  --aws-region <AWS-region>
+```bash
+python main.py --docker-image python --bash-command $'pip install pip -U && pip install tqdm && python -c \"import time\ncounter = 0\nwhile True:\n\tprint(counter)\n\tcounter = counter + 1\n\ttime.sleep(0.1\"' --aws-cloudwatch-group test-task-group-1 --aws-cloudwatch-stream test-task-stream-1 --aws-access-key-id ... --aws-secret-access-key ... --aws-region ...
 ```
 ## Using a Python Script File
 If you prefer to run a Python script file, ensure the file is accessible within your directory.
@@ -72,14 +64,3 @@ python main.py \
   --aws-region <AWS-region>
 ```
 
-## Test Task 
-
-In the test-task to ensure real-time streaming of logs from the beginning, I have modified the print statement in the script to include `flush=True`. This prevents the output from being block-buffered, which can delay the appearance of logs.[Python Buffer Documentation](https://docs.python.org/3/c-api/buffer.html)<br> 
-The command still works without the arguement but it will start showing logs after about counter 2000.
-This is the command with the changes.
-```bash
-python main.py --docker-image python --bash-command $'pip install pip -U && pip
-install tqdm && python -c \"import time\\ncounter = 0\\nwhile
-True:\\n\\tprint(counter, flush=True)\\n\\tcounter = counter + 1\\n\\ttime.sleep(0.1)\"'
---aws-cloudwatch-group test-task-group-1 --aws-cloudwatch-stream test-task-stream-1
---aws-access-key-id ... --aws-secret-access-key ... --aws-region ...
