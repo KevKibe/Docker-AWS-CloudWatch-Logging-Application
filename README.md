@@ -74,8 +74,8 @@ python main.py \
 
 ## Test Task 
 
-In the test-task to ensure real-time streaming of logs from the beginning, modify the print statement in the script to include `flush=True`. This prevents the output from being block-buffered, which can delay the appearance of logs.<br> 
-This is the command with the changes
+In the test-task to ensure real-time streaming of logs from the beginning, modify the print statement in the script to include `flush=True`. This prevents the output from being block-buffered, which can delay the appearance of logs.[Python Buffer Documentation](https://docs.python.org/3/c-api/buffer.html)<br> 
+This is the command with the changes.
 ```bash
 python main.py --docker-image python --bash-command $'pip install pip -U && pip
 install tqdm && python -c \"import time\\ncounter = 0\\nwhile
