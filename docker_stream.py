@@ -53,9 +53,7 @@ class DockerClient:
         """
 
         try:
-            container = self.client.containers.run(self.image, self.command, detach=True)
-            for line in container.logs(stream=True):
-                print(line.strip())
+            container = self.client.containers.run(self.image, ["sh", "-c",self.command], detach=True)
             return container
         except ImageNotFound:
             print(f"Image '{self.image}' not found. Please check the image name and try again.")
@@ -66,4 +64,5 @@ class DockerClient:
         except DockerException:
             print("General Docker error occurred. Please check your Docker setup and try again.")
             sys.exit(1)
+
 
