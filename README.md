@@ -74,7 +74,8 @@ python main.py \
 
 ## Test Task 
 
-In the test-task to ensure real-time streaming of logs from the beginning, modify the print statement in the script to include `flush=True`. This prevents the output from being block-buffered, which can delay the appearance of logs.[Python Buffer Documentation](https://docs.python.org/3/c-api/buffer.html)<br> 
+In the test-task to ensure real-time streaming of logs from the beginning, I have modified the print statement in the script to include `flush=True`. This prevents the output from being block-buffered, which can delay the appearance of logs.[Python Buffer Documentation](https://docs.python.org/3/c-api/buffer.html)<br> 
+The command still works without the arguement but it will start showing logs after about counter 2000.
 This is the command with the changes.
 ```bash
 python main.py --docker-image python --bash-command $'pip install pip -U && pip
