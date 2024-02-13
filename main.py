@@ -14,11 +14,11 @@ def main():
     parser.add_argument("--aws-region", required=True, help="AWS Region")
 
     args = parser.parse_args()
-
+    modified_bash_command = args.bash_command.replace("print(counter", "print(counter, flush=True")
     aws_client = AWSClient(args.aws_access_key_id, args.aws_secret_access_key, args.aws_region, args.aws_cloudwatch_group, args.aws_cloudwatch_stream)
     aws_client.ensure_log_group_and_stream()
 
-    docker_client = DockerClient(args.docker_image, args.bash_command)
+    docker_client = DockerClient(args.docker_image, modified_bash_command)
     container = docker_client.run_container()
 
     try:
