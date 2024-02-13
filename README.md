@@ -49,7 +49,14 @@ Command Line Arguments
 ## Running the Application
 Here is an example:
 ```bash
-python main.py --docker-image python --bash-command $'pip install pip -U && pip install tqdm && python -c \"import time\ncounter = 0\nwhile True:\n\tprint(counter)\n\tcounter = counter + 1\n\ttime.sleep(0.1\"' --aws-cloudwatch-group test-task-group-1 --aws-cloudwatch-stream test-task-stream-1 --aws-access-key-id ... --aws-secret-access-key ... --aws-region ...
+python main.py \
+  --docker-image python \
+  --bash-command $'pip install pip -U && pip install tqdm && python -c \"import time\ncounter = 0\nwhile True:\n\tprint(counter)\n\tcounter = counter + 1\n\ttime.sleep(0.1\"' \
+  --aws-cloudwatch-group test-task-group-1 \
+  --aws-cloudwatch-stream test-task-stream-1 \
+  --aws-access-key-id ... \
+  --aws-secret-access-key ... \
+  --aws-region ... 
 ```
 ## Using a Python Script File
 If you prefer to run a Python script file, ensure the file is accessible within your directory.
@@ -59,8 +66,8 @@ python main.py \
   --bash-command 'bash -c "python /path/to/script.py"' \
   --aws-cloudwatch-group MyLogGroup \
   --aws-cloudwatch-stream MyLogStream \
-  --aws-access-key-id <YourAccessKeyId> \
-  --aws-secret-access-key <YourSecretAccessKey> \
-  --aws-region <AWS-region>
+  --aws-access-key-id ... \
+  --aws-secret-access-key ... \
+  --aws-region ...
 ```
 
