@@ -1,6 +1,7 @@
 import docker
 from docker.errors import APIError, DockerException, ImageNotFound
 import sys 
+import re
 
 class DockerClient:
 
@@ -37,8 +38,7 @@ class DockerClient:
             sys.exit(1)  
         self.image = image
         self.command = command
-
-
+    
     def run_container(self):
 
         """
@@ -53,7 +53,8 @@ class DockerClient:
         """
 
         try:
-            container = self.client.containers.run(self.image, ["sh", "-c",self.command], detach=True)
+            modified_command = re.sub(r'print\(([^)]+)\)', r'print(\1, flush=True)', self.command)
+            container = self.client.containers.run(self.image, ["sh", "-c",modified_command], detach=True)
             return container
         except ImageNotFound:
             print(f"Image '{self.image}' not found. Please check the image name and try again.")
@@ -65,4 +66,12 @@ class DockerClient:
             print("General Docker error occurred. Please check your Docker setup and try again.")
             sys.exit(1)
 
+# python main.py --docker-image python --bash-command $'pip install pip -U && pip install tqdm && python -c "import time\ncounter = 0\nwhile True:\n\tprint(counter)\n\tcounter = counter + 1\n\ttime.sleep(0.1)\n"' --aws-cloudwatch-group group-3 --aws-cloudwatch-stream stream-1 --aws-access-key-id AKIAVRUVQNHJ3TVYEJ5F --aws-secret-access-key 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 --aws-region eu-north-1
 
+# image = "python:3.8"
+# command = "python -c \"import time\ncounter = 0\nwhile True:\n\tprint(counter)\n\tcounter = counter + 1\n\ttime.sleep(0.1)\""
+# client = DockerClient(image, command)
+# run = client.run_container()
+
+
+# python main.py --docker-image python --bash-command $'pip install pip -U && pip install tqdm && python -c \"import time\ncounter = 0\nwhile True:\n\tprint(counter)\n\tcounter = counter + 1\n\ttime.sleep(0.1)\"' --aws-cloudwatch-group group-3 --aws-cloudwatch-stream stream-1 --aws-access-key-id AKIAVRUVQNHJ3TVYEJ5F --aws-secret-access-key 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 --aws-region eu-north-1
