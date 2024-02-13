@@ -71,3 +71,14 @@ python main.py \
   --aws-secret-access-key <YourSecretAccessKey> \
   --aws-region <AWS-region>
 ```
+
+## Test Task 
+
+In the test-task to ensure real-time streaming of logs from the beginning, modify the print statement in the script to include `flush=True`. This prevents the output from being block-buffered, which can delay the appearance of logs.<br> 
+This is the command with the changes
+```bash
+python main.py --docker-image python --bash-command $'pip install pip -U && pip
+install tqdm && python -c \"import time\\ncounter = 0\\nwhile
+True:\\n\\tprint(counter, flush=True)\\n\\tcounter = counter + 1\\n\\ttime.sleep(0.1)\"'
+--aws-cloudwatch-group test-task-group-1 --aws-cloudwatch-stream test-task-stream-1
+--aws-access-key-id ... --aws-secret-access-key ... --aws-region ...
